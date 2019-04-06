@@ -200,12 +200,5 @@ public class MyLinkedList{
 	  this.end=other.end;
   }
   }
-  public static void main(String[]args){
-    MyLinkedList[] ary=new MyLinkedList[10];
-    ary[0]=new MyLinkedList();
-    ary[0].add(2);
-    ary[0].addFront(1);
 
-
-  }
 }
