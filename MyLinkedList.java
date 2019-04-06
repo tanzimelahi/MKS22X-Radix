@@ -207,7 +207,5 @@ public class MyLinkedList{
     ary[0].addFront(1);
 
 
-    System.out.println(ary[0]);
-
   }
 }
