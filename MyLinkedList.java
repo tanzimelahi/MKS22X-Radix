@@ -42,7 +42,7 @@ public class MyLinkedList{
 	  }
 	  else {
 	  Node node=new Node(i,null,this.end);
-	  this.getn(length-1).setNext(node);
+	  end.setNext(node); // change
 	  end=node;
 	  length++;
 	  return true;
@@ -52,6 +52,9 @@ public class MyLinkedList{
 	  return this.length;
   }
   public String toString() {
+    if(length==0){
+      return "[null]";
+    }
 	  String result="[";
 	  Node current=this.start;
 	  for(int i=0;i<this.length-1;i++) {
@@ -127,17 +130,24 @@ public class MyLinkedList{
 	  if(index<0 ||index>=this.length) {
 		  throw new IndexOutOfBoundsException();
 	  }
+    if(index==0 && this.length==1){
+      Integer answer=start.getData();
+      start=null;
+      end=null;
+      length--;
+      return answer;
+    }
 	  if(index==0) {
-		  Integer answer=this.getn(index).getData();
-		  this.start=this.getn(index+1);
+		  Integer answer=start.getData();
+		  start=start.next();
 		  start.setPrev(null);
 		  length--;
 		  return answer;
 	  }
 	  else if(index==length-1) {
 
-		  Integer answer=this.getn(index).getData();
-		  this.end=this.getn(index-1);
+		  Integer answer=end.getData();
+		  this.end=end.prev();// change this baendck
 		  this.end.setNext(null);
 		  length--;
 		  return answer;
@@ -154,6 +164,7 @@ public class MyLinkedList{
 	  }
   }
   public boolean remove(Integer value) {
+    System.out.println("wrong");
 	  for(int i=0;i<this.length;i++) {
 		  if(this.getn(i).getData().equals(value)) {
 			  this.remove(i);
@@ -176,17 +187,13 @@ public class MyLinkedList{
   }
   }
   public static void main(String[]args){
-    MyLinkedList ary=new MyLinkedList();
-    ary.add(2);
-    ary.add(3);
-    System.out.println(ary);
-    ary.clear();
-    System.out.println(ary);
-    MyLinkedList[]array=new MyLinkedList[10];
-    for(int i=0;i<10;i++){
-      array[i]=new MyLinkedList();
-    }
-    System.out.println(array[0]);
-    System.out.println(null==array[0].remove(0));
+    MyLinkedList[] ary=new MyLinkedList[10];
+    ary[0]=new MyLinkedList();
+    ary[0].add(1);
+    ary[0].add(2);
+    ary[0].remove(0);
+
+    System.out.println(ary[0]);
+
   }
 }

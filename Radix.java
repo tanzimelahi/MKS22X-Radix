@@ -18,8 +18,7 @@ public class Radix{
         maxnum=maxnum/10;
       }
     }
-   //System.out.println("greatest number of digits: "+ count);
-    int divisor=10;
+  // System.out.println("greatest number of digits: "+ count);
      MyLinkedList[]bucket=new MyLinkedList[10];
      MyLinkedList storage=new MyLinkedList();// stores the data temporaritly as an array
      for(int i=0;i<bucket.length;i++){
@@ -33,29 +32,25 @@ public class Radix{
          storage.extend(bucket[i]);
        }
      }
-     System.out.println(storage);// test case
+     //System.out.println(storage);// test case
      for(int i=1;i<count;i++){
-        MyLinkedList[]bucket2=new MyLinkedList[10];
-        for(int l=0;l<10;l++){
-          bucket2[l]=new MyLinkedList();
-        }
-       for(int index=0;index<data.length;index++){
-          int info=storage.remove(0);
-          int algorithm=info;
-          for(int tired=0;tired<count+1;tired++){
-            algorithm=algorithm/10;
-          }
-          algorithm=algorithm%10;
-          //System.out.println("count: "+i+" info: "+info+ "here's the digitCurrent: "+ algorithm);
-          bucket2[algorithm].add(info);
-       }
-       storage.clear();
+       MyLinkedList[]bucket2=new MyLinkedList[10];
        for(int j=0;j<bucket2.length;j++){
-         if(bucket2[j].size()>0){
-           storage.extend(bucket2[j]);
-         }
+         bucket2[j]=new MyLinkedList();
+       }
+      // System.out.println(storage);
+       for(int index=0;index<data.length;index++){// checked
+         int dummyStore=storage.remove(0);
+         int place=dummyStore/(int)(Math.pow(10,i))%10;
+         bucket2[place].add(dummyStore);
+       }
+       for(int gona=0;gona<bucket2.length;gona++){
+         if(bucket2[gona].size()!=0){
+          storage.extend(bucket2[gona]);
+        }
       }
-    }
+     }
+// last part of the code when the linked list is put into the array;
     for(int num=0;num<data.length;num++){
       data[num]=storage.remove(0);
     }
@@ -66,6 +61,6 @@ public class Radix{
     MyLinkedList inf2=new MyLinkedList();
   //  inf.add(2);
   radixSort(data);
-//  System.out.println(Arrays.toString(data));
+  System.out.println(Arrays.toString(data));
   }
 }
