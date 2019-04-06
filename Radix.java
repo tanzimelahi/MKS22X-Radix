@@ -18,7 +18,7 @@ public class Radix{
         maxnum=maxnum/10;
       }
     }
-   System.out.println("greatest number of digits: "+ count);
+   //System.out.println("greatest number of digits: "+ count);
     int divisor=10;
      MyLinkedList[]bucket=new MyLinkedList[10];
      MyLinkedList storage=new MyLinkedList();// stores the data temporaritly as an array
@@ -29,10 +29,11 @@ public class Radix{
        bucket[data[i]%10].add(data[i]);
      }
      for(int i=0;i<bucket.length;i++){
-       if(bucket[i]!=null){
+       if(bucket[i].size()!=0){ // fixed the null and made it size zero
          storage.extend(bucket[i]);
        }
      }
+     System.out.println(storage);// test case
      for(int i=1;i<count;i++){
         MyLinkedList[]bucket2=new MyLinkedList[10];
         for(int l=0;l<10;l++){
@@ -45,7 +46,7 @@ public class Radix{
             algorithm=algorithm/10;
           }
           algorithm=algorithm%10;
-          System.out.println("count: "+i+" info: "+info+ "here's the digitCurrent: "+ algorithm);
+          //System.out.println("count: "+i+" info: "+info+ "here's the digitCurrent: "+ algorithm);
           bucket2[algorithm].add(info);
        }
        storage.clear();
@@ -65,6 +66,6 @@ public class Radix{
     MyLinkedList inf2=new MyLinkedList();
   //  inf.add(2);
   radixSort(data);
-  System.out.println(Arrays.toString(data));
+//  System.out.println(Arrays.toString(data));
   }
 }
