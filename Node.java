@@ -8,6 +8,11 @@ public class Node{
       this.prev=prev;
 
     }
+    public Node(){
+      this.data=null;
+      this.next=null;
+      this.prev=null;
+    }
 
   public Node next() {
     return next;
