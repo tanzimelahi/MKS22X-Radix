@@ -32,6 +32,20 @@ public class MyLinkedList{
 	  }
 	  return end;
   }
+  public boolean addFront(Integer i){
+    if(length==0){
+      start=new Node(i,null,null);
+      end=start;
+      length++;
+      return true;
+    }
+    else{
+      Node node=new Node(i,start,null);
+      this.start=node;
+      length++;
+      return true;
+    }
+  }
   public boolean add(Integer i) {// this is what i need to use
 
 	  if(length==0 ) {
@@ -189,9 +203,9 @@ public class MyLinkedList{
   public static void main(String[]args){
     MyLinkedList[] ary=new MyLinkedList[10];
     ary[0]=new MyLinkedList();
-    ary[0].add(1);
     ary[0].add(2);
-    ary[0].remove(0);
+    ary[0].addFront(1);
+
 
     System.out.println(ary[0]);
 
