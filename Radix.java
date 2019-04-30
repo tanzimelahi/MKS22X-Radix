@@ -1,6 +1,6 @@
 import java.util.Arrays;
 public class Radix{
-  public static void radixSort(int[]data){
+  public static void radixsort(int[]data){
     int maxnum=data[0];
     for(int i=0;i<data.length;i++){
       if(data[i]>maxnum){
